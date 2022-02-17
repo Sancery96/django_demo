@@ -16,6 +16,7 @@ urlpatterns = [
     path('add', views.user_add),
     path('edit', views.user_edit),
     path('del', views.user_del),
+    path('tpl', views.tpl),
 
 ]
 
