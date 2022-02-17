@@ -9,15 +9,15 @@ def index(request):
 
 
 def user_list(request):
-    return HttpResponse('用户列表')
+    return render(request, 'user_list.html')
 
 
 def user_add(request):
-    return HttpResponse('添加用户')
+    return render(request, 'user_add.html')
 
 
 def user_edit(request):
-    return HttpResponse('编辑用户')
+    return render(request, 'user_edit.html')
 
 
 def user_del(request):
