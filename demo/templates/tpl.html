@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+模板语法
+{% endblock %}
+
+{% block content %}
+    <h3>模板语法</h3>
+    <hr>
+    {{ n1 }}
+    <hr>
+    {{ n2 }}
+    <br>
+    {{ n2.0 }}
+    {{ n2.1 }}
+    {{ n2.2 }}
+    {{ n2.3 }}
+    <br>
+    {% for season in n2 %}
+        {{ season }}
+    {% endfor %}
+    <hr>
+    {{ n3 }}
+    <br/>
+    {% for k, v in n3.items %}
+        {{ forloop.counter }} - {{ k }} : {{ v }} <br>
+    {% endfor %}
+    <hr>
+    {{ n4 }}
+    <ul>
+        {% for item in n4 %}
+            <li>
+                <img src="{{ item.img }}" alt="{{ item.name }}" width="100px" height="75px">
+                <span class="figure-caption">{{ item.name }}</span><br>
+                <span>功效：{{ item.function }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

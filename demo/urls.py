@@ -8,14 +8,10 @@
 """
 
 from django.urls import path
-from user import views
+from demo import views
 
 urlpatterns = [
-    path('', views.index),
-    path('lists', views.user_list),
-    path('add', views.user_add),
-    path('edit', views.user_edit),
-    path('del', views.user_del),
+    path('tpl', views.tpl),
 
 ]
 
