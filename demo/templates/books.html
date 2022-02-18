@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    豆瓣图书T250
+{% endblock %}
+
+{% block content %}
+    <h1 style="font-weight: bolder;font-size: xxx-large;font-family: 方正舒体;margin-bottom: 10px">豆瓣Top250</h1>
+    <table>
+        {% for book in books %}
+            <tr style="margin-bottom: 10px">
+                <td width="20%"><img src="{{ book.img }}" alt="{{ book.title }} " width="50%"></td>
+                <td>
+                    <a href="{{ book.link }}" style="font-family: 方正舒体;font-size: larger;font-weight: bold">{{ book.title }}</a>
+                    <p><small>{{ book.author }}</small></p>
+                    <p class="quote" style="margin: 10px 0; color: #666">
+                        <span class="inq">{{ book.quote }}</span>
+                    </p>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

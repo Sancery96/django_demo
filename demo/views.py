@@ -11,3 +11,31 @@ def tpl(request):
              {'name': '当归', 'function': '补血活血，调经止痛，润肠通便', 'img': '../static/img/Danggui.jpeg'}]
 
     return render(request, 'tpl.html', {'n1': name, 'n2': seasons, 'n3': herb, 'n4': herbs})
+
+
+def books(request):
+    import requests
+    from bs4 import BeautifulSoup
+    url = 'https://book.douban.com/top250?icn=index-book250-all'
+    headers = {
+       'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
+    }
+
+    html = requests.get(url, headers=headers)
+    # print(html.text)
+    soup = BeautifulSoup(html.text)
+    books = soup.select('.item')
+    book_list = []
+    for book in books:
+        info = {
+            'title': book.select_one('.pl2').a.get_text(),
+            'link': book.select_one('.pl2').a.get('href'),
+            'author': book.select_one('p.pl').text,
+            'score': book.select_one('.rating_nums').text,
+            'quote': book.select_one('.inq').text,
+            'img': book.select_one('img')['src']
+        }
+        book_list.append(info)
+    # print(books)
+
+    return render(request, 'books.html', {'books': book_list})
