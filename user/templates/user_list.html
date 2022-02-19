@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1 class="text-center">用户列表</h1>
-        <a href="./add" class="btn text-center btn-success float-end col-2" role="button">
+        <a href="{% url 'user_add' %}" class="btn text-center btn-success float-end col-2" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="15%" fill="currentColor"
                  class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                 <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -31,8 +31,8 @@
                 <td>{{ user.age }}</td>
                 <td>{{ user.password }}</td>
                 <td>
-                    <a href="#" class="btn btn-primary" role="button">编辑</a>
-                    <a href="./del/{{ user.name }}" class="btn btn-danger" role="button">删除</a>
+                    <a href="{% url 'user_edit' %}?uid={{ user.id }}" class="btn btn-primary" role="button">编辑</a>
+                    <a href="{% url 'user_del' user.name %}" class="btn btn-danger" role="button">删除</a>
                 </td>
             </tr>
         {% endfor %}

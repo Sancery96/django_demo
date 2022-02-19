@@ -23,12 +23,20 @@ def user_add(request):
         age = request.POST.get('age')
         password = request.POST.get('password')
         UserInfo.objects.create(name=name, age=age, password=password)
-        return redirect('./lists')
+        return redirect('user_lists')
     return render(request, 'user_add.html')
 
 
 def user_edit(request):
-    return render(request, 'user_edit.html')
+    user_id = request.GET.get('uid')
+    user = UserInfo.objects.filter(id=user_id)
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        password = request.POST.get('password')
+        user.update(name=name, age=age, password=password)
+        return redirect('user_lists')
+    return render(request, 'user_edit.html', {'user': user.first()})
 
 
 def user_del(request, name):
