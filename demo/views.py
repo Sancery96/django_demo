@@ -49,4 +49,6 @@ def login(request):
         print(e_mail, password)
         if e_mail == 'root@qq.com' and password == '123456':
             return redirect('./books')
+        else:
+            return render(request, 'login.html', {'error_msg':'用户名或密码错误'})
     return render(request, 'login.html')
