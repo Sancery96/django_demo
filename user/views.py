@@ -13,7 +13,8 @@ def user_list(request):
     # setting下的Template-Dirs为[]时，根据app的注册顺序，到每个app的templates目录下寻找
     # setting下的Template-Dirs为[BASE_DIR / 'templates']时，先到根目录的templates寻找，
     # 如果未找到，再根据app的注册顺序，到每个app的templates目录下寻找
-    return render(request, 'user_list.html')
+    users = UserInfo.objects.all()
+    return render(request, 'user_list.html', {'users': users})
 
 
 def user_add(request):
