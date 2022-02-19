@@ -13,6 +13,7 @@ from demo import views
 urlpatterns = [
     path('tpl', views.tpl),
     path('books', views.books),
+    path('login', views.login),
 
 ]
 

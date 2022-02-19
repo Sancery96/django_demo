@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 
 # Create your views here.
 
@@ -39,3 +40,13 @@ def books(request):
     # print(books)
 
     return render(request, 'books.html', {'books': book_list})
+
+
+def login(request):
+    if request.method == 'POST':
+        e_mail = request.POST.get('email')
+        password = request.POST.get('pswd')
+        print(e_mail, password)
+        if e_mail == 'root@qq.com' and password == '123456':
+            return redirect('./books')
+    return render(request, 'login.html')
