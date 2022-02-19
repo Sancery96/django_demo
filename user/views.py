@@ -1,7 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
+from user.models import UserInfo
 
 
 def index(request):
@@ -16,6 +17,12 @@ def user_list(request):
 
 
 def user_add(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        password = request.POST.get('password')
+        UserInfo.objects.create(name=name, age=age, password=password)
+        return redirect('./lists')
     return render(request, 'user_add.html')
 
 
