@@ -31,5 +31,7 @@ def user_edit(request):
     return render(request, 'user_edit.html')
 
 
-def user_del(request):
-    return HttpResponse('删除用户')
+def user_del(request, name):
+    UserInfo.objects.filter(name=name).delete()
+    return redirect('../lists')
+    # return HttpResponse('删除用户')

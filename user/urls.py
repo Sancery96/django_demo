@@ -15,7 +15,7 @@ urlpatterns = [
     path('lists', views.user_list),
     path('add', views.user_add),
     path('edit', views.user_edit),
-    path('del', views.user_del),
+    path('del/<str:name>', views.user_del),
 
 ]
 
