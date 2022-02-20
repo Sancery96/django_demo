@@ -35,7 +35,7 @@ def user_edit(request, uid):
     if request.method == 'POST':
         name = request.POST.get('name')
         age = request.POST.get('age')
-        password = request.POST.get('pswd')
+        password = request.POST.get('password')
         gender = request.POST.get('gender')
         depart_title = request.POST.get('depart')
         depart = Depart.objects.filter(title=depart_title).first()
